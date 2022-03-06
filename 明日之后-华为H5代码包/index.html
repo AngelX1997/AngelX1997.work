@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta content="telephone=no" name="format-detection" />
+  <title>明日之后</title>
+  <!-- 分享链接时的展示文本：必须填写！ -->
+  <link rel="stylesheet" href="css/index.css?jv=1.0.20210723" />
+  <link rel="stylesheet" href="css/swiper.min.css?jv=1.0.20210723">
+  <script type="text/javascript">
+    !(function (win, doc, width) {
+      function setFontSize() {
+        var winWidth = window.innerWidth;
+        var size = Math.round((winWidth / width) * 100);
+        doc.documentElement.style.fontSize = (size < 100 ? size : 100) + "px";
+      };
+      var evt = "onorientationchange" in win ? "orientationchange" : "resize";
+      var timer = null;
+
+      win.addEventListener(evt, function () {
+        clearTimeout(timer);
+        timer = setTimeout(setFontSize, 300);
+      }, false);
+
+      win.addEventListener("pageshow", function (e) {
+        if (e.persisted) {
+          clearTimeout(timer);
+          timer = setTimeout(setFontSize, 300);
+        }
+      }, false);
+      setFontSize();
+    })(window, document, 640);
+  </script>
+  <style type="text/css">
+    .wx-mask {
+      position: fixed;
+      z-index: 98;
+      -webkit-backface-visibility: hidden;
+      width: 100%;
+      height: 100%;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.3);
+      -webkit-transition: all .5s;
+      transition: all .5s;
+    }
+
+    .tip {
+      position: absolute;
+      right: 8px;
+      top: 0;
+      width: 168px;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    //设置webview字体大小不受系统修改而改变
+    (function () {
+      if (window.HiSpaceObject) {
+        window.HiSpaceObject.setTextSizeNormal();
+      }
+    })();
+  </script>
+  <div class="main">
+    <!-- <div class="header">
+      <img class="header_icon" src="img/icon.png" alt="">
+      <div class="header_text">
+        <p class="header_name">明日之后</p>
+        <p class="header_desc">2021年8月6日上线</p>
+      </div>
+      <a class="header_btn" data-forumid='3'>前往基地</a>
+    </div> -->
+    <!-- 内容 -->
+    <div class="content">
+      <div class="part">
+        <img src="img/img_01.jpg">
+      </div>
+      <div class="part">
+        <img src="img/img_02.jpg">
+
+        <a class="header_btn" data-forumid='3'>前往基地</a>
+      </div>
+      <!-- 资讯爆料 -->
+      <div class="part part_zxbl">
+        <div class="show-wrap">
+          <div class="swiper-container" id="chare">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide"><img src="img/p1.png" /></div>
+              <div class="swiper-slide"><img src="img/p2.png" /></div>
+              <div class="swiper-slide"><img src="img/p3.png" /></div>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+      <!-- 资料片情报 -->
+      <div class="part part_zlpqb">
+        <!-- <img src="img/img_04.jpg"> -->
+
+        <div class="video_cover" id="videoBtn">
+          <img src="img/video.jpg">
+        </div>
+      </div>
+      <div class="part">
+        <img src="img/img.gif">
+      </div>
+      <!-- 视频弹窗 -->
+      <div class="popvideo" style="display: none;">
+        <div class="popvideo-wrap">
+          <div class="popvideo-content">
+            <video id="video" src="img/video.mp4" controls="controls" preload="auto"></video>
+          </div>
+          <div class="popvideo-close-btn"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js?jv=1.0.20210723"></script>
+    <script type="text/javascript" src="js/hwlttz.js?jv=1.0.20210723"></script>
+    <script type="text/javascript" src="js/swiper.min.js?jv=1.0.20210723"></script>
+    <script type="text/javascript" src="js/index.js?jv=1.0.20210723"></script>
+</body>
+
+</html>
+<script type="text/javascript">
+  $(document).ready(function () {
+
+    if (!window.HiSpaceObject) {
+      var isWeixin = is_weixin();
+      if (isWeixin) {
+        document.getElementById("wxm").style.display = "";
+        //设置下载提示蒙版箭头图片点击事件
+        document.getElementById("wxm").onclick = function () {
+          window.setTimeout(function () {
+            document.getElementById("wxm").style.display = "none";
+          }, 550);
+        };
+      } else {
+        openClient();
+      }
+    }
+  });
+
+  function openClient() {
+    var delayTime = 3000;
+    // 通过iframe的方式试图打开APP，如果能正常打开，会直接切换到APP，并自动阻止a标签的默认行为
+    // 否则打开a标签的href链接
+    var ifr = document.createElement('iframe');
+    document.body.appendChild(ifr);
+    ifr.style.display = 'none';
+
+    var orderUrl = "https://a.vmall.com/order/app?appId=C101210021%26pkgName=com.netease.harrypotter.huawei"; //TODO
+    ifr.src =
+      "hiapp://com.huawei.appmarket?activityName=activityUri|webview.activity&params={\"params\":[{\"name\":\"url\",\"type\":\"String\",\"value\":\"" +
+      orderUrl + "\"},{\"name\":\"uri\",\"type\":\"String\",\"value\":\"external_webview\"}]}&channelId=123412";
+
+    ifr.style.display = 'none';
+    setTimeout(function () {
+      $.ajax({
+        url: "https://a.vmall.com/uc/getAppIdByPkg?packageName=com.huawei.appmarket",
+        type: "get",
+        dataType: "json",
+        data: {},
+        success: function (data) {
+          if (data) {
+            document.body.removeChild(ifr);
+            window.location.href = data.app.url;
+          }
+        }
+      });
+    }, delayTime);
+  }
+
+  //是否微信打开
+  function is_weixin() {
+    var ua = navigator.userAgent.toLowerCase();
+    if (ua.match(/MicroMessenger/i) == "micromessenger" ||
+      ua.match(/WeiBo/i) == "weibo") {
+      return true;
+    } else {
+      return false;
+    }
+  }
+</script>
