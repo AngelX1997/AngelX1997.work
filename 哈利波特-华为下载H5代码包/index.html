@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta content="telephone=no" name="format-detection" />
+	<title>哈利波特：魔法觉醒</title>
+	<!-- 分享链接时的展示文本：必须填写！ -->
+	<meta name="description" content="《哈利·波特》官方正版授权，打造全新魔法世界体验。欧式复古绘本风，收集魔法卡牌，体验刺激的巫师对决！入学霍格沃茨，神秘魔法之旅即将开启...">
+	<meta name="higame-image" content="./img/icon.png?jv=1.0.20201119" />
+	<meta name="higame-share-title" content="《幻书启世录》2020年敬请期待" />
+	<link rel="stylesheet" href="css/swiper.min.css" />
+	<link rel="stylesheet" href="css/main.css?jv=1.0.20210514" />
+	<script type="text/javascript">
+		!(function (win, doc, width) {
+			function setFontSize() {
+				var winWidth = window.innerWidth;
+				var size = Math.round((winWidth / width) * 100);
+				doc.documentElement.style.fontSize = (size < 100 ? size : 100) + "px";
+			};
+			var evt = "onorientationchange" in win ? "orientationchange" : "resize";
+			var timer = null;
+
+			win.addEventListener(evt, function () {
+				clearTimeout(timer);
+				timer = setTimeout(setFontSize, 300);
+			}, false);
+
+			win.addEventListener("pageshow", function (e) {
+				if (e.persisted) {
+					clearTimeout(timer);
+					timer = setTimeout(setFontSize, 300);
+				}
+			}, false);
+			setFontSize();
+		})(window, document, 640);
+	</script>
+	<style type="text/css">
+		.wx-mask {
+			position: fixed;
+			z-index: 98;
+			-webkit-backface-visibility: hidden;
+			width: 100%;
+			height: 100%;
+			bottom: 0;
+			left: 0;
+			background-color: rgba(0, 0, 0, 0.3);
+			-webkit-transition: all .5s;
+			transition: all .5s;
+		}
+
+		.tip {
+			position: absolute;
+			right: 8px;
+			top: 0;
+			width: 168px;
+		}
+	</style>
+</head>
+
+<body>
+	<script>
+		//设置webview字体大小不受系统修改而改变
+		(function () {
+			if (window.HiSpaceObject) {
+				window.HiSpaceObject.setTextSizeNormal();
+			}
+		})();
+	</script>
+	<div class="main">
+		<!-- 头部 -->
+		<div class="top">
+			<a class="share-btn"></a>
+			<a class="download-btn"></a>
+			<div class="header-info-wrap"></div>
+		</div>
+		
+		<!-- 内容 -->
+		<div class="content">
+			<div class="scroll">
+				<img class="scroll-btn" src="./img/scroll_btn.png" alt="">
+				<img class="scroll-tips" src="./img/scroll_tips.png" alt="">
+			</div>
+
+			<!-- 预约 -->
+			<!-- <div class="part part-order">
+				<div class="title"><img src="img/order.png"></div>
+				<div class="order-box">
+					<div class="order-item">
+						<a class="join-btn" src="img/join_0.png"></a>
+					</div>
+					<div class="order-item">
+						<a class="join-btn" src="img/join_0.png"></a>
+					</div>
+				</div>
+			</div> -->
+			<!-- 抽奖 -->
+			<div class="part part-lottery">
+				<div class="lottery" id="J_lottery">
+					<h3><img src="img/download.png" style="width: 4.2rem" /></h3>
+					<h3><img src="img/download_tips.png" style="width: 4.2rem; padding: 0.18rem 0 0.48rem 0;" /></h3>
+					<table border="0" cellpadding="0" cellspacing="0">
+						<tbody>
+							<tr>
+								<td class="luck-unit luck-unit-0">
+									<div class="prize"><img src="img/lottery/p0.png" alt="HUAWEI P40 Pro">
+										<p>HUAWEI P40 Pro</p>
+									</div>
+								</td>
+								<td class="luck-unit luck-unit-1">
+									<div class="prize"><img src="img/lottery/p1.png" alt="Nintendo Switch 国行">
+										<p>Nintendo Switch 国行</p>
+									</div>
+								</td>
+								<td class="luck-unit luck-unit-2">
+									<div class="prize"><img src="img/lottery/p2.png" alt="霍格沃茨城堡乐高">
+										<p>霍格沃茨城堡乐高</p>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="luck-unit luck-unit-7">
+									<div class="prize"><img src="img/lottery/p7.png" alt="HUAWEI 手环 B6">
+										<p>HUAWEI 手环 B6</p>
+									</div>
+								</td>
+								<td class="cj_unit"><a href="javascript:;" id="J_cj" class="cj_btn">立即抽奖</a></td>
+								<!-- 增加 btn_dom  按钮变灰 -->
+								<td class="luck-unit luck-unit-3">
+									<div class="prize"><img src="img/lottery/p3.png" alt="哈利波特盲盒周边">
+										<p>哈利波特盲盒周边</p>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="luck-unit luck-unit-6">
+									<div class="prize"><img src="img/lottery/p6.png" alt="100元京东卡">
+										<p>100元京东卡</p>
+									</div>
+								</td>
+								<td class="luck-unit luck-unit-5">
+									<div class="prize"><img src="img/lottery/p5.png" alt="50元京东卡">
+										<p>50元京东卡</p>
+									</div>
+								</td>
+								<td class="luck-unit luck-unit-4">
+									<div class="prize"><img src="img/lottery/p4.png" alt="谢谢参与">
+										<p>谢谢参与</p>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="part-lottery-rule" id="rule_btn">
+					<img src="img/lottery_rule.png">
+				</div>
+			</div>
+			<div class="part">
+				<img src="img/rule_01.png" style="padding: 0 0.3rem">
+			</div>
+			<!-- 显示中奖结果 -->
+			<div class="winning" id="J_winning">
+				<div class="cover"></div>
+				<div class="result">
+					<p class="r_tit"></p>
+					<p class="result_txt">恭喜您获得<span id="J_prizeName"></span></p>
+					<div class="result_img"><img id="J_prizeImg" src="" alt=""></div>
+
+					<div class="btn">
+						<a href="javascript:;" class="close">关闭</a>
+						<a href="javascript:;" class="yylq">立即领取</a>
+					</div>
+					<p class="result_ts">您可在7天内进入“我的”-“奖品”中领取,逾期失效</p>
+				</div>
+			</div>
+
+			<!-- 2.	用户没有中奖时提示 -->
+			<div class="winning" id="J_failing">
+				<div class="cover"></div>
+				<div class="result result_no">
+					<p class="r_tit"></p>
+					<div class="txt_desc"></div>
+					<div class="btn">
+						<a href="javascript:;" class="close">关 闭</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="part part-list">
+				<div class="card-item">
+					<img class="card-img" src="./img/card.png">
+				</div>
+				<div class="card-item">
+					<img class="card-img" src="./img/card.png">
+				</div>
+				<div class="card-item">
+					<img class="card-img" src="./img/card.png">
+				</div>
+			</div>
+
+			<div class="part part-sign">
+				<div class="title"><img style="width: 4.46rem" src="img/sign.png"></div>
+				<img class="sign-list"  src="img/sign_list.png" alt="">
+				<a class="sign-btn"></a>
+				<p class="sing-tips">每日签到，都可获得1次抽奖机会</p>
+			</div>
+			<div class="part part-sign">
+			
+			</div>
+
+			<!-- 视频弹窗 -->
+			<div class="popvideo" style="display: none;">
+				<div class="popvideo-wrap">
+					<div class="popvideo-content">
+						<video id="video" src="https://nie.v.netease.com/nie/2020/0615/f3e7da7b189d78e11e29801def552310qt.mp4"
+							controls="controls" preload="auto"></video>
+					</div>
+					<div class="popvideo-close-btn"></div>
+				</div>
+			</div>
+
+			<!-- <div class="part part-scene">
+				<div class="title"><img src="img/title_scene.png"></div>
+				<div class="part-scene-content">
+					<div class="part-scene-img"><img src="img/gif1.gif"></div>
+					<div class="part-scene-txt"><img src="img/scene_txt_1.png"></div>
+					<div class="part-scene-img"><img src="img/gif2.gif"></div>
+					<div class="part-scene-txt"><img src="img/scene_txt_2.png"></div>
+					<div class="part-scene-img"><img src="img/gif3.gif"></div>
+					<div class="part-scene-txt"><img src="img/scene_txt_3.png"></div>
+				</div>
+			</div> -->
+
+			<div class="part part-partner" style="margin-top: 1rem">
+				<div class="title"><img style="width: 3.4rem" src="img/title_partner1.png"></div>
+				<div class="part-partner-content">
+					<div class="part-partner-swiper">
+						<div class="swiper-container" id="swiper_partner">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide"><img src="img/partner_1.png" /></div>
+								<div class="swiper-slide"><img src="img/partner_2.png" /></div>
+								<div class="swiper-slide"><img src="img/partner_3.png" /></div>
+								<div class="swiper-slide"><img src="img/partner_4.png" /></div>
+								<div class="swiper-slide"><img src="img/partner_5.png" /></div>
+								<div class="swiper-slide"><img src="img/partner_6.png" /></div>
+								<div class="swiper-slide"><img src="img/partner_7.png" /></div>
+								<div class="swiper-slide"><img src="img/partner_8.png" /></div>
+								<div class="swiper-slide"><img src="img/partner_9.png" /></div>
+								<div class="swiper-slide"><img src="img/partner_10.png" /></div>
+							</div>
+						</div>
+					</div>
+					<div class="part-partner-heads-swiper">
+						<div class="swiper-container" id="swiper_heads">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<div class="partner-head"><img src="img/partner_head_1.png" /></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="partner-head"><img src="img/partner_head_2.png" /></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="partner-head"><img src="img/partner_head_3.png" /></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="partner-head"><img src="img/partner_head_4.png" /></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="partner-head"><img src="img/partner_head_5.png" /></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="partner-head"><img src="img/partner_head_6.png" /></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="partner-head"><img src="img/partner_head_7.png" /></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="partner-head"><img src="img/partner_head_8.png" /></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="partner-head"><img src="img/partner_head_9.png" /></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="partner-head"><img src="img/partner_head_10.png" /></div>
+								</div>
+							</div>
+						</div>
+						<div class="swiper-button-next"></div>
+						<div class="swiper-button-prev"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="part part-pics">
+				<div class="title"><img style="width: 3.4rem" src="img/title_pics1.png"></div>
+				<div class="part-pics-content">
+					<div class="part-pics-swiper">
+						<div class="swiper-container" id="swiper_pics">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<div class="pic"><img src="img/pics_img_1.png" /></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="pic"><img src="img/pics_img_2.png" /></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="pic"><img src="img/pics_img_3.png" /></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="pic"><img src="img/pics_img_4.png" /></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="pic"><img src="img/pics_img_5.png" /></div>
+								</div>
+									<div class="swiper-slide">
+									<div class="pic"><img src="img/pics_img_6.png" /></div>
+								</div>
+							</div>
+						</div>
+						<div class="swiper-button-next"></div>
+						<div class="swiper-button-prev"></div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- 活动规则 -->
+	<div class="rule-mask" id="rule" style="display:none;">
+		<img src="img/rule.jpg" class="rule-desc" />
+		<div class="rule-close-btn"></div>
+	</div>
+
+	<!-- 下载提示蒙版箭头 -->
+	<div class="wx-mask" id="wxm" style="display:none;">
+		<img src="img/tip.png" class="tip" />
+	</div>
+	<!-- 下载提示蒙版箭头 end-->
+	<script type="text/javascript" src="js/jquery-1.12.4.min.js?jv=1.0.20190722"></script>
+	<script type="text/javascript" src="js/hwlttz.js?jv=1.0.20210422"></script>
+	<script type="text/javascript" src="js/swiper.min.js?jv=1.0.20190722"></script>
+	<script type="text/javascript" src="js/index.js?jv=1.0.20210514"></script>
+</body>
+
+</html>
+<script type="text/javascript">
+	$(document).ready(function () {
+
+		if (!window.HiSpaceObject) {
+			var isWeixin = is_weixin();
+			if (isWeixin) {
+				document.getElementById("wxm").style.display = "";
+				//设置下载提示蒙版箭头图片点击事件
+				document.getElementById("wxm").onclick = function () {
+					window.setTimeout(function () {
+						document.getElementById("wxm").style.display = "none";
+					}, 550);
+				};
+			} else {
+				openClient();
+			}
+		}
+	});
+
+	function openClient() {
+		var delayTime = 3000;
+		// 通过iframe的方式试图打开APP，如果能正常打开，会直接切换到APP，并自动阻止a标签的默认行为
+		// 否则打开a标签的href链接
+		var ifr = document.createElement('iframe');
+		document.body.appendChild(ifr);
+		ifr.style.display = 'none';
+
+		var orderUrl = "https://a.vmall.com/order/app?appId=C101210021%26pkgName=com.netease.harrypotter.huawei"; //TODO
+		ifr.src =
+			"hiapp://com.huawei.appmarket?activityName=activityUri|webview.activity&params={\"params\":[{\"name\":\"url\",\"type\":\"String\",\"value\":\"" +
+			orderUrl + "\"},{\"name\":\"uri\",\"type\":\"String\",\"value\":\"external_webview\"}]}&channelId=123412";
+
+		ifr.style.display = 'none';
+		setTimeout(function () {
+			$.ajax({
+				url: "https://a.vmall.com/uc/getAppIdByPkg?packageName=com.huawei.appmarket",
+				type: "get",
+				dataType: "json",
+				data: {},
+				success: function (data) {
+					if (data) {
+						document.body.removeChild(ifr);
+						window.location.href = data.app.url;
+					}
+				}
+			});
+		}, delayTime);
+	}
+
+	//是否微信打开
+	function is_weixin() {
+		var ua = navigator.userAgent.toLowerCase();
+		if (ua.match(/MicroMessenger/i) == "micromessenger" ||
+			ua.match(/WeiBo/i) == "weibo") {
+			return true;
+		} else {
+			return false;
+		}
+	}
+</script>
